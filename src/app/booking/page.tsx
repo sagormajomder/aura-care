@@ -2,6 +2,7 @@
 
 import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { caretakers } from '@/data/caretakers';
 import { ServiceCategory } from '@/types';
 
@@ -50,12 +51,12 @@ function BookingForm() {
                 <p><span className="font-medium">Total Cost:</span> ${totalCost}</p>
               </div>
             </div>
-            <button
-              onClick={() => window.location.href = '/'}
-              className="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition"
+            <Link
+              href="/"
+              className="inline-block px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition"
             >
               Return to Home
-            </button>
+            </Link>
           </div>
         </div>
       </div>
