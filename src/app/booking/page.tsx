@@ -1,17 +1,17 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { caretakers } from '@/data/caretakers';
 import { ServiceCategory } from '@/types';
 
-export default function BookingPage() {
+function BookingForm() {
   const searchParams = useSearchParams();
   const preselectedCaretakerId = searchParams.get('caretakerId');
 
   const [selectedCaretaker, setSelectedCaretaker] = useState(preselectedCaretakerId || '');
   const [serviceType, setServiceType] = useState<ServiceCategory>('childcare');
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(() => new Date().toISOString().split('T')[0]);
   const [time, setTime] = useState('');
   const [duration, setDuration] = useState('2');
   const [customerName, setCustomerName] = useState('');
@@ -23,12 +23,6 @@ export default function BookingPage() {
 
   const selectedCaretakerData = caretakers.find((c) => c.id === selectedCaretaker);
   const totalCost = selectedCaretakerData ? selectedCaretakerData.hourlyRate * parseInt(duration) : 0;
-
-  useEffect(() => {
-    // Set minimum date to today
-    const today = new Date().toISOString().split('T')[0];
-    setDate(today);
-  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -281,5 +275,13 @@ export default function BookingPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function BookingPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <BookingForm />
+    </Suspense>
   );
 }

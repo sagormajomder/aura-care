@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import ServiceCard from '@/components/ServiceCard';
@@ -8,7 +9,7 @@ import { services } from '@/data/services';
 import { caretakers } from '@/data/caretakers';
 import { ServiceCategory } from '@/types';
 
-export default function ServicesPage() {
+function ServicesContent() {
   const searchParams = useSearchParams();
   const category = searchParams.get('category') as ServiceCategory | null;
 
@@ -246,5 +247,13 @@ export default function ServicesPage() {
         </section>
       </div>
     </div>
+  );
+}
+
+export default function ServicesPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <ServicesContent />
+    </Suspense>
   );
 }
