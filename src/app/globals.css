@@ -1,0 +1,205 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Font */
+  --font-inter: var(--font-inter);
+  --font-sans: var(--font-inter);
+  --font-nunito: var(--font-nunito);
+
+  /* Color Mappings (Standard Shadcn + Tailwind v4) */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Charts */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar Mappings */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Border Radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+}
+
+:root {
+  --radius: 0.5rem; /* Standard rounded look */
+
+  /* BASE NEUTRALS (Cool Grey Tint) */
+  --background: oklch(99% 0.01 240);
+  --foreground: oklch(20% 0.03 240);
+
+  /* CARDS & SURFACES (Clean White) */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(20% 0.03 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(20% 0.03 240);
+
+  /* PRIMARY: Deep Teal (Trust & Professionalism) */
+  --primary: oklch(55% 0.12 190);
+  --primary-foreground: oklch(98% 0.01 240);
+
+  /* SECONDARY: Warm Coral (Care & Action) */
+  --secondary: oklch(65% 0.15 30);
+  --secondary-foreground: oklch(20% 0.03 240);
+
+  /* MUTED: Soft Cool Grey */
+  --muted: oklch(96% 0.01 240);
+  --muted-foreground: oklch(55% 0.04 240);
+
+  /* ACCENT: Very Light Teal (For Hovers) */
+  --accent: oklch(94% 0.02 190);
+  --accent-foreground: oklch(20% 0.03 240);
+
+  /* DESTRUCTIVE: Warm Red */
+  --destructive: oklch(60% 0.18 20);
+  --destructive-foreground: oklch(98% 0 0);
+
+  /* BORDERS */
+  --border: oklch(90% 0.02 240);
+  --input: oklch(90% 0.02 240);
+  --ring: oklch(55% 0.12 190); /* Matches Primary */
+
+  /* CHARTS (Aligned with Brand) */
+  --chart-1: oklch(55% 0.12 190); /* Teal */
+  --chart-2: oklch(65% 0.15 30); /* Coral */
+  --chart-3: oklch(45% 0.12 240); /* Navy */
+  --chart-4: oklch(80% 0.1 85); /* Soft Yellow */
+  --chart-5: oklch(60% 0.15 330); /* Pink */
+
+  /* SIDEBAR (Matches Light Theme) */
+  --sidebar: oklch(98% 0.01 240);
+  --sidebar-foreground: oklch(20% 0.03 240);
+  --sidebar-primary: oklch(55% 0.12 190);
+  --sidebar-primary-foreground: oklch(98% 0.01 240);
+  --sidebar-accent: oklch(94% 0.02 190);
+  --sidebar-accent-foreground: oklch(20% 0.03 240);
+  --sidebar-border: oklch(90% 0.02 240);
+  --sidebar-ring: oklch(55% 0.12 190);
+}
+
+.dark {
+  /* DARK MODE NEUTRALS (Deep Blue-Grey) */
+  --background: oklch(15% 0.02 240);
+  --foreground: oklch(98% 0.01 240);
+
+  /* CARDS (Slightly Lighter than Background) */
+  --card: oklch(20% 0.02 240);
+  --card-foreground: oklch(98% 0.01 240);
+  --popover: oklch(20% 0.02 240);
+  --popover-foreground: oklch(98% 0.01 240);
+
+  /* PRIMARY: Lighter Teal for Dark Mode Visibility */
+  --primary: oklch(65% 0.12 190);
+  --primary-foreground: oklch(10% 0.02 240);
+
+  /* SECONDARY: Soft Coral */
+  --secondary: oklch(70% 0.15 30);
+  --secondary-foreground: oklch(10% 0.02 240);
+
+  /* MUTED */
+  --muted: oklch(25% 0.02 240);
+  --muted-foreground: oklch(70% 0.02 240);
+
+  /* ACCENT */
+  --accent: oklch(25% 0.03 190);
+  --accent-foreground: oklch(98% 0.01 240);
+
+  /* DESTRUCTIVE */
+  --destructive: oklch(60% 0.18 20);
+  --destructive-foreground: oklch(98% 0.01 0);
+
+  /* BORDERS */
+  --border: oklch(25% 0.02 240);
+  --input: oklch(25% 0.02 240);
+  --ring: oklch(65% 0.12 190);
+
+  /* CHARTS */
+  --chart-1: oklch(65% 0.12 190);
+  --chart-2: oklch(70% 0.15 30);
+  --chart-3: oklch(60% 0.12 240);
+  --chart-4: oklch(85% 0.1 85);
+  --chart-5: oklch(70% 0.15 330);
+
+  /* SIDEBAR (Matches Dark Theme) */
+  --sidebar: oklch(18% 0.02 240);
+  --sidebar-foreground: oklch(98% 0.01 240);
+  --sidebar-primary: oklch(65% 0.12 190);
+  --sidebar-primary-foreground: oklch(10% 0.02 240);
+  --sidebar-accent: oklch(25% 0.03 190);
+  --sidebar-accent-foreground: oklch(98% 0.01 240);
+  --sidebar-border: oklch(25% 0.02 240);
+  --sidebar-ring: oklch(65% 0.12 190);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-semibold text-foreground;
+  }
+
+  h1 {
+    @apply text-5xl font-bold;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-2xl;
+  }
+}
